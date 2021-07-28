@@ -1,0 +1,7 @@
+env/
+__pycache__/
+*.pyc
+data/
+saved/
+saved_models/
+lda_vizs/

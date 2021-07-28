@@ -1,0 +1,6 @@
+vncorenlp
+pandas
+gensim
+plotly
+pyldavis
+matplotlib
