@@ -1,5 +1,5 @@
 import utils
-from bertopic import BERTopic
+from BERTopic.bertopic import BERTopic
 from flair.embeddings import TransformerDocumentEmbeddings
 from sklearn.datasets import fetch_20newsgroups
 docs = fetch_20newsgroups(subset='all',  remove=('headers', 'footers', 'quotes'))['data']
