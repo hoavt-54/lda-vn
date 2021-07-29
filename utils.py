@@ -1,4 +1,5 @@
 import traceback
+import pickle
 from matplotlib import pyplot as plt
 from pathlib import Path
 import pandas as pd
@@ -12,7 +13,7 @@ def read_dataset(data_dir="data/data_vn"):
     return pd.DataFrame(data, columns=["text"])
 
 
-def file2list(file_name):
+def file2list(file_name) -> list:
     l = []
     with open(file_name) as f:
         for line in f:
@@ -24,6 +25,20 @@ def read_text_file(fn="test.txt"):
     with open(f"data/{fn}") as f:
         text = f.read()
         return pd.DataFrame([text], columns=["text"])
+
+
+def cache_tokenized(docs) -> None:
+    with open("saved_models/tokenized.cache", "wb") as f:
+        pickle.dump(docs, f)
+
+
+def read_tokenized() -> list:
+    try:
+        with open("saved_models/tokenized.cache", "rb") as f:
+            return pickle.load(f)
+    except:
+        traceback.print_exc()
+        return None
 
 
 class Tokenizer():
