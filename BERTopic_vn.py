@@ -30,3 +30,7 @@ def main():
     annotator = VnCoreNLP('VnCoreNLP/VnCoreNLP-1.1.1.jar', annotators="wseg,pos", max_heap_size='-Xmx2g')
     tokenizer = Tokenizer(annotator)
     build_model(tokenizer)
+
+
+if __name__ == "__main__":
+    main()
