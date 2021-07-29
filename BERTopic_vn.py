@@ -13,7 +13,7 @@ def build_model(tokenizer):
     docs = data["text"].tolist()
     docs = [" ".join(tokenizer.preprocess(doc, filter=False)) for doc in docs]
     phobert = TransformerDocumentEmbeddings(EMBS)
-    topic_model = BERTopic(embedding_model=phobert, top_n_words=8, min_topic_size=20)
+    topic_model = BERTopic(embedding_model=phobert, top_n_words=10, min_topic_size=20)
     topics, _ = topic_model.fit_transform(docs)
 
     topic_model.get_topic_info()
