@@ -9,7 +9,7 @@ SAVED_PLOT = "saved_models/bertopic_vnmese_plot_%s.html"
 SAVED_BAR = "saved_models/bertopic_vnmese_barchat_%s.html"
 EMBS = "vinai/phobert-base"
 
-def build_model(tokenizer, min_topic_size=12):
+def build_model(tokenizer, min_topic_size=15):
     docs = read_tokenized()
     if not docs:
         data = read_dataset()
@@ -20,12 +20,10 @@ def build_model(tokenizer, min_topic_size=12):
     phobert = TransformerDocumentEmbeddings(EMBS)
     topic_model = BERTopic(
         embedding_model=phobert,
-        min_topic_size=min_topic_size,
-        nr_topics="auto"
+        min_topic_size=min_topic_size
         )
     topics, _ = topic_model.fit_transform(docs)
 
-    min_topic_size = "auto"
     topic_model.get_topic_info()
     topic_model.save(SAVED_MODEL % min_topic_size)
     topic_model.visualize_topics().write_html(SAVED_PLOT % min_topic_size)
