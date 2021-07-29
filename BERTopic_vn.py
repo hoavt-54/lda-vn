@@ -6,9 +6,10 @@ from utils import read_dataset, Tokenizer, cache_tokenized, read_tokenized
 
 SAVED_MODEL = "saved_models/vietnamese_vnexpress_%s.model"
 SAVED_PLOT = "saved_models/bertopic_vnmese_plot_%s.html"
+SAVED_BAR = "saved_models/bertopic_vnmese_barchat_%s.html"
 EMBS = "vinai/phobert-base"
 
-def build_model(tokenizer, min_topic_size=20):
+def build_model(tokenizer, min_topic_size=12):
     docs = read_tokenized()
     if not docs:
         data = read_dataset()
@@ -24,9 +25,11 @@ def build_model(tokenizer, min_topic_size=20):
         )
     topics, _ = topic_model.fit_transform(docs)
 
+    min_topic_size = "auto"
     topic_model.get_topic_info()
-    topic_model.save(SAVED_MODEL)
-    topic_model.visualize_topics().write_html(SAVED_PLOT)
+    topic_model.save(SAVED_MODEL % min_topic_size)
+    topic_model.visualize_topics().write_html(SAVED_PLOT % min_topic_size)
+    topic_model.visualize_barchart().write_html(SAVED_BAR % min_topic_size)
 
 
 def inference():

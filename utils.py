@@ -4,6 +4,10 @@ from matplotlib import pyplot as plt
 from pathlib import Path
 import pandas as pd
 
+
+TOKEN_CACHE = "saved_models/tokenized.cache"
+
+
 def read_dataset(data_dir="data/data_vn"):
     data = []
     dirpath = Path(data_dir)
@@ -28,13 +32,13 @@ def read_text_file(fn="test.txt"):
 
 
 def cache_tokenized(docs) -> None:
-    with open("saved_models/tokenized.cache", "wb") as f:
+    with open(TOKEN_CACHE, "wb") as f:
         pickle.dump(docs, f)
 
 
 def read_tokenized() -> list:
     try:
-        with open("saved_models/tokenized.cache", "rb") as f:
+        with open(TOKEN_CACHE, "rb") as f:
             return pickle.load(f)
     except:
         traceback.print_exc()
