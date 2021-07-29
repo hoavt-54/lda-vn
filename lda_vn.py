@@ -49,13 +49,13 @@ def build_model(annotator, num_topics=30):
     list_list_tokens = preprocess(df, annotator)
 
     id2word = corpora.Dictionary(list_list_tokens)
-    id2word.filter_extremes(no_below=5, no_above=0.6, keep_n=VOCAB_SIZE)
+    id2word.filter_extremes(no_below=50, no_above=0.6, keep_n=VOCAB_SIZE)
     logger.info(f"Done processing dataset len, vocab len {len(id2word.keys())}, {len(list_list_tokens)}")
     
     # convert data into df vectors
     corpus = [id2word.doc2bow(tokens) for tokens in list_list_tokens]
 
-    for num_topics in range(10, 120, 6):
+    for num_topics in range(10, 200, 6):
         lda_model = LdaModel(corpus, num_topics=num_topics,
                                 id2word=id2word,
                                 passes=20,

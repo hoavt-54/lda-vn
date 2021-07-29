@@ -1,3 +1,6 @@
 [submodule "VnCoreNLP"]
 	path = VnCoreNLP
 	url = https://github.com/vncorenlp/VnCoreNLP
+[submodule "BERTopic"]
+	path = BERTopic
+	url = https://github.com/MaartenGr/BERTopic
