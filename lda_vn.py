@@ -57,8 +57,8 @@ def build_model(annotator, num_topics=30):
     for num_topics in range(10, 200, 6):
         lda_model = LdaModel(corpus, num_topics=num_topics,
                                 id2word=id2word,
-                                passes=20,
-                                iterations=400,
+                                passes=2,  # 20
+                                iterations=40,  # 400
                                 # alpha=[0.01]*num_topics,
                                 alpha="auto",
                                 # eta=[0.01] * VOCAB_SIZE,
