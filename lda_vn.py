@@ -23,7 +23,6 @@ logger =logging.getLogger(__name__)
 VOCAB_SIZE=10000
 SAVING_DIR = "saved_models"
 UNIGRAM_FILE = "saved_models/unigram.data"
-BIGRAM_FILE = "saved_models/bigram.data"
 
 
 def preprocess(df, annotator):

@@ -19,6 +19,7 @@ def build_model(tokenizer, min_topic_size=15):
     
     phobert = TransformerDocumentEmbeddings(EMBS)
     topic_model = BERTopic(
+        top_n_words = 12,
         embedding_model=phobert,
         min_topic_size=min_topic_size
         )
