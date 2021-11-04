@@ -17,7 +17,7 @@ pip install -r requirements.txt
 git submodule init & git submodule update
 </pre>
 
-Run LDA and its visualization
+Run LDA and its visualization. Increasing the number of iterations and passes to see the changes in time and results
 <pre>
 python3 lda_vn.py
 open lda_vizs/lda_visualization_40.html
